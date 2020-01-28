@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="A calculator that computes the best configuration of resistors or capacitors to achieve an equivalent value.">
+	<meta name="author" content="Michael D'Argenio">
+
+	<!-- icon for browser -->
+	<!-- update -->
+	<link rel="icon" href="media/headshot.png">
+
+	<!-- import font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space%20Mono">
+
+	<title>Resistor/Capacitor Calculator</title>
+
+	<!-- import CSS style sheets -->
+	<link href="style.css" rel="stylesheet">
+	<link href="bootstrap.css" rel="stylesheet">
+
+	<!-- import javascript -->
+	<script type="text/javascript" src="rc_calc.js"></script>
+
+</head>
+
+<body id="bg">
+
+	<!-- window -->
+	<div class="container">
+		<!-- header -->
+		<div class="row">
+			<div class="col-md-12 mx-auto p-3 pb-0 text-center">
+				<h1>Existing R/C Equivalence Calculator</h1>
+				<hr>
+				<p class="px-8">For computing the best configuration of your existing resistors or capacitors to achieve a target resistance or capacitance value you don't presently have.</p>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 mx-auto p-3 pb-0 text-center">
+				<p>Have you ever needed a specific resistor or capacitor that you don't have? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable	optimization problem with billions of different combinations, use this program!</p>
+				<p>Just input the target value, the maximum number of components you would like to use to achieve the target value, the values of the components you have, and whether you are computing a value for a resistor or a capacitor. This program will spit out what values to use in what configuration to achieve your resistance or capacitance value.</p>
+			</div>
+		</div>
+		<!-- input text fields -->
+		<div class="row">
+			<div class="col-md-4 mx-auto p-2 pr-4 text-center my-auto">
+				<table>
+					<tbody>
+						<tr>
+							<td class="align-bottom">
+								<p>Target Value:</p>
+							</td>
+							<td>
+								<textarea id="targetText" type="text" rows="1" cols="12">1250</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="align-bottom">
+								<p>Number of Components:</p>
+							</td>
+							<td class="align-middle">
+								<textarea id="numCompText" type="text" rows="1" cols="12">3</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-8 mx-auto p-2 pl-4 text-center">
+				<p>List the component values you presently have in a comma-separated list as shown below. Do not include units! Below is a list of common resistor values for example.</p>
+				<p>Standardize your units! If you give a value in killiohms, all values must be in killiohms. Your result will also be in killiohms. If you give a value in nanofarads, all values must be in nanofarads and the result will also be in nanofarads.</p>
+				<textarea id="compValsText" type="text" rows="5" style="width:100%">10,15,22,33,47,68,100,150,220,330,470,680,1000,1500,2200,3300,4700,6800,10000,15000,22000,33000,47000,68000,100000,150000,220000,330000,470000,680000</textarea>
+			</div>
+		</div>
+		<!-- radio buttons -->
+		<div class="row">
+			<div class="col-sm-4 mx-auto pr-0 text-center">
+				<label class="container">
+					<input type="radio" checked="checked" name="component" id="resRadio">
+					Resistor
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-sm-4 mx-auto pl-0 text-center">
+				<label class="container">
+					<input type="radio" name="component" id="capRadio">
+					Capacitor
+					<span class="checkmark"></span>
+				</label>
+			</div>
+		</div>
+		<!-- big button -->
+		<div class="row">
+			<div class="col-md-12 mx-auto p-3 text-center">
+				<button onclick="calculatorClick()" id="calcButton">
+					Calculate!
+				</button>
+			</div>
+		</div>
+		<!-- output response -->
+		<div class="row">
+			<div class="col-md-12 mx-auto text-center">
+				<p id="calcOutput"></p>
+				<p>"+" means series and "||" means parallel. The operators have the same precedence and it is left associative. Needs more explanation.</p>
+				<p>R0=15 Ohms + R1=470 Ohms || R2=3300 Ohms + R3=15000 Ohms <br>That means that R0 and R1 are in series, R3 is in parallel with that, then R3 is in series. So (R0+R1)||R2+R3</p> Show a photo
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

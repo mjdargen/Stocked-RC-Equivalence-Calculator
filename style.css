@@ -1,0 +1,83 @@
+* {
+	/*font-family: 'Space Mono', monospace;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;*/
+	/*{cursor: url(http://ani.cursors-4u.net/cursors/cur-13/cur1150.ani),
+	url(http://ani.cursors-4u.net/cursors/cur-13/cur1150.png), auto !important}*/
+}
+
+html {
+	max-height: 100%;
+	max-width: 100%;
+	font-family: 'Space Mono', monospace !important;
+	color: #000000;
+	overflow:auto;
+}
+body {
+	max-height: 100%;
+	max-width: 100%;
+	font-family: 'Space Mono', monospace !important;
+	color: #000000;
+	overflow:auto;
+}
+
+/* --------------------------------------------------- */
+/*                <p> flavors text info                */
+/* --------------------------------------------------- */
+
+h1{
+	font-size: 1.5rem !important;
+	line-height: 1.5rem !important;
+	font-weight: bold !important;
+}
+
+h2{
+	font-size: 1rem !important;
+	line-height: 1rem !important;
+}
+
+h3{
+	font-size: 1rem !important;
+	line-height: 1rem !important;
+}
+
+p {
+	font-size: .8rem !important;
+	line-height: 1rem !important;
+	text-align:left;
+}
+
+.px-8 {
+  padding-left: 4rem !important;
+	padding-right: 4rem !important;
+}
+
+#text_input {
+	font-family: 'Space Mono', monospace;
+	font-size: .9rem !important;
+	line-height: 1.1rem !important;
+	text-align: left;
+	width: calc(100% - 10px);
+	resize: none;
+}
+/* --------------------------------------------------- */
+/*                background image info                */
+/* --------------------------------------------------- */
+#bg {
+	position: fixed;
+	background-color: #FF745F;
+	width: 100%;
+	height: 100%;
+	user-select: none;
+	z-index: 0;
+}
+
+#calcButton {
+	width: 30%;
+	margin: auto;
+	padding: 4px 8px 4px 8px;
+	background-color: #721B6F;
+	color:white;
+	font-family: 'Space Mono', monospace;
+}
