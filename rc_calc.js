@@ -16,6 +16,7 @@ function calculatorClick() {
 	ser_par_config = [];
 
 	var resultDisplay = document.getElementById("resultRow");
+	var exampleDisplay = document.getElementById("exampleRow");
 	var calcOutput = document.getElementById("calcOutput");
 	var targetTextObj = document.getElementById('targetText');
 	var numCompTextObj = document.getElementById('numCompText');
@@ -45,7 +46,7 @@ function calculatorClick() {
 
 	calcOutput.innerHTML = outputStr;
 	resultDisplay.style.display = "block";
-
+	exampleDisplay.style.display = "flex";
 }
 
 /*
