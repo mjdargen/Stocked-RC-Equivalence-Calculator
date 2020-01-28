@@ -50,11 +50,6 @@ p {
 	text-align:left;
 }
 
-button {
-	font-size: 1rem !important;
-	line-height: 1.2rem !important;
-}
-
 .px-8 {
   padding-left: 4rem !important;
 	padding-right: 4rem !important;
@@ -81,10 +76,11 @@ button {
 }
 
 #calcButton {
-	width: 30%;
 	margin: auto;
-	padding: 4px 8px 4px 8px;
+	padding: 4px 8px 4px 8px !important;
 	background-color: #721B6F;
 	color:white;
 	font-family: 'Space Mono', monospace;
+	font-size: 1rem !important;
+	line-height: 1.2rem !important;
 }
