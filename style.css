@@ -20,6 +20,8 @@ body {
 	font-family: 'Space Mono', monospace !important;
 	color: #000000;
 	overflow:auto;
+	font-size: .8rem !important;
+	line-height: 1rem !important;
 }
 
 /* --------------------------------------------------- */
@@ -46,6 +48,11 @@ p {
 	font-size: .8rem !important;
 	line-height: 1rem !important;
 	text-align:left;
+}
+
+button {
+	font-size: 1rem !important;
+	line-height: 1.2rem !important;
 }
 
 .px-8 {

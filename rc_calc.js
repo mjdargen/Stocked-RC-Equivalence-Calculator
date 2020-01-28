@@ -15,6 +15,7 @@ function calculatorClick() {
 	closest = [];
 	ser_par_config = [];
 
+	var resultDisplay = document.getElementById("resultRow");
 	var calcOutput = document.getElementById("calcOutput");
 	var targetTextObj = document.getElementById('targetText');
 	var numCompTextObj = document.getElementById('numCompText');
@@ -35,22 +36,32 @@ function calculatorClick() {
 		i++;
 	}
 	compVals[i] = parseInt(compValsStr);
-	resistor(target, numComp, compVals);
+	if (document.getElementById("resRadio").checked) {
+		resistor(target, numComp, compVals);
+	}
+	else if (document.getElementById("capRadio").checked) {
+		capacitor(target, numComp, compVals);
+	}
 
 	calcOutput.innerHTML = outputStr;
+	resultDisplay.style.display = "block";
 
 }
 
-// function that retrieves and prints the best resistor combination
-// takes the target value and number of resistors allowed as an argument
+/*
+Retrieves and prints the best resistor configuration
+	* target - target resistance value
+	* numComp - total number of resistors allowed to be used to achieve target val
+	* compVals - array of resistor values
+*/
 function resistor(target, numComp, compVals) {
-	// common resistance values
+	// length of resistance values
 	var num_res = compVals.length;
 
 	// run through all possible number of components
 	for (var i=1; i<=numComp; i++) {
-		var thing = [];
-		resCombination(compVals, num_res, i, 0, thing, target);
+		var data = [];
+		resCombination(compVals, num_res, i, 0, data, target);
 	}
 
 	// print results
@@ -71,16 +82,13 @@ function resistor(target, numComp, compVals) {
 
 /*
 Calculates the best combination of resistors to achieve a target value.
-Based on a given array of resistor values and a specified allowable # of resistors.
-
-res[] - input array of resistor values
-num_res	- size of input array of resistor values - num_res
-r	- number of resistors allowed - num_comb
-index - index of comb[]
-comb[] - array of current combination
-target - the target value
-
-No return value - passes current best combination to global values
+	* res[] - input array of resistor values
+	* num_res	- size of input array of resistor values
+	* num_comb	- number of resistors allowed
+	* index - index of comb[]
+	* comb[] - array of current combination
+	* target - the target value
+	* No return value - passes current best combination to global values
 */
 function resCombination(res, num_res, num_comb, index, comb, target) {
 	// current combination is complete
@@ -125,12 +133,101 @@ function resCombination(res, num_res, num_comb, index, comb, target) {
 		return 0;
 	}
 
-	// replace index with all possible elements. The condition
-	// "end-i+1 >= r-index" makes sure that including one element
-	// at index will make a combination with remaining elements
-	// at remaining positions
+	// recursively call and replace the index with all possible values
 	for (var i=0; i<=num_res && num_res-i+1 >= num_comb-index; i++) {
 		comb[index] = res[i];
 		resCombination(res, num_res, num_comb, index+1, comb, target);
+	}
+}
+
+/*
+Retrieves and prints the best capacitor configuration
+	* target - target capacitance value
+	* numComp - total number of capacitors allowed to be used to achieve target val
+	* compVals - array of capacitor values
+*/
+function capacitor(target, numComp, compVals) {
+	// length of capacitance values
+	var num_cap = compVals.length;
+
+	// run through all possible number of components
+	for (var i=1; i<=numComp; i++) {
+		var data = [];
+		capCombination(compVals, num_cap, i, 0, data, target);
+	}
+
+	// print results
+	outputStr = "Closest Value: " + closest_val.toFixed(3) + " F <br>";
+	outputStr += "Difference: " + closest_diff.toFixed(3) + " F <br>";
+	outputStr += "Capacitor Configuration: ";
+	for (var i=0; i<numComp; i++) {
+		if (i<closest.length) {
+			outputStr += "C" + i + "=" + closest[i] + " F ";
+			if (i+1<closest.length) {
+				if (ser_par_config[i+1]) outputStr += "|| ";
+				else outputStr += "+ ";
+			}
+		}
+		else break;
+	}
+}
+
+/*
+Calculates the best combination of capacitors to achieve a target value.
+	* cap[] - input array of capacitor values
+	* num_cap	- size of input array of capacitor values
+	* num_comb	- number of capacitors allowed
+	* index - index of comb[]
+	* comb[] - array of current combination
+	* target - the target value
+	* No return value - passes current best combination to global values
+*/
+function capCombination(cap, num_cap, num_comb, index, comb, target) {
+	// current combination is complete
+	if (index == num_comb) {
+		var ser_par_size = Math.pow(2,num_comb); // 2^(number of components)
+		var ser_par = []; // bool array specifying serial or parallel for each component
+		var calc; // calculated equivalent capacitance value
+
+		// step through every possible series/parallel config of current combination
+		for (var j=0; j<ser_par_size; j++) {
+			calc = 0.0;
+			// creates a boolean array of 0s & 1s for all possible combinations
+			for (var k=0; k<num_comb; k++) {
+				ser_par[k] = (j >> k) & 1;
+			}
+			// do the calculations for the combination based on series/parallel combo
+			for (var k=0; k<num_comb; k++) {
+				// first number, just add
+				if (k==0) calc = comb[k];
+				// zero means series, inverse of the sum of reciprocals
+				else if (!ser_par[k]) calc = (calc*comb[k])/(calc+comb[k]);
+				// one means parallel, add capacitance values
+				else if (ser_par[k]) calc += comb[k];
+			}
+
+			// check to see if difference is less than previous best
+			if (Math.abs(calc - target) < closest_diff) {
+				// it is less, so update global values
+				closest_val = calc;
+				closest_diff = Math.abs(calc - target);
+				// clear to zero
+				for (var k=0; k<num_comb; k++) {
+					closest[k] = 0;
+				}
+				// update closest value & series/parallel arrays
+				for (var k=0; k<num_comb; k++) {
+					closest[k] = comb[k];
+					ser_par_config[k] = ser_par[k];
+				}
+			}
+		}
+		return 0;
+	}
+
+	// recursively call and replace the index with all possible values
+	for (var i=0; i<=num_cap && num_cap-i+1 >= num_comb-index; i++) {
+		comb[index] = cap[i];
+		capCombination(cap, num_cap, num_comb, index+1, comb, target);
 	}
 }
