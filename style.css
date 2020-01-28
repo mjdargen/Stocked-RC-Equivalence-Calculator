@@ -13,6 +13,8 @@ html {
 	font-family: 'Space Mono', monospace !important;
 	color: #000000;
 	overflow:auto;
+	font-size: .8rem !important;
+	line-height: 1rem !important;
 }
 body {
 	max-height: 100%;
@@ -20,8 +22,8 @@ body {
 	font-family: 'Space Mono', monospace !important;
 	color: #000000;
 	overflow:auto;
-	font-size: .8rem !important;
-	line-height: 1rem !important;
+	font-size: 1rem !important;
+	line-height: 1.1rem !important;
 }
 
 /* --------------------------------------------------- */
@@ -36,17 +38,17 @@ h1{
 
 h2{
 	font-size: 1rem !important;
-	line-height: 1rem !important;
+	line-height: 1.1rem !important;
 }
 
 h3{
 	font-size: 1rem !important;
-	line-height: 1rem !important;
+	line-height: 1.1rem !important;
 }
 
 p {
-	font-size: .8rem !important;
-	line-height: 1rem !important;
+	font-size: 1rem !important;
+	line-height: 1.1rem !important;
 	text-align:left;
 }
 
