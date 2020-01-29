@@ -8,13 +8,8 @@
 }
 
 html {
-	max-height: 100%;
-	max-width: 100%;
-	font-family: 'Space Mono', monospace !important;
-	color: #000000;
-	overflow:auto;
+	overflow: auto;
 	font-size: .8rem !important;
-	line-height: 1rem !important;
 }
 body {
 	max-height: 100%;
@@ -23,7 +18,8 @@ body {
 	color: #000000;
 	overflow:auto;
 	font-size: 1rem !important;
-	line-height: 1.1rem !important;
+	/*line-height: 1.1rem !important;*/
+	user-select: auto !important;
 }
 
 /* --------------------------------------------------- */
@@ -32,23 +28,21 @@ body {
 
 h1{
 	font-size: 1.5rem !important;
-	line-height: 1.5rem !important;
+	/*line-height: 1.5rem !important;*/
 	font-weight: bold !important;
 }
 
 h2{
 	font-size: 1rem !important;
-	line-height: 1.1rem !important;
 }
 
 h3{
 	font-size: 1rem !important;
-	line-height: 1.1rem !important;
 }
 
 p {
 	font-size: 1rem !important;
-	line-height: 1.1rem !important;
+	/*line-height: 1.1rem !important;*/
 	text-align:left;
 }
 
@@ -79,10 +73,10 @@ p {
 
 #calcButton {
 	margin: auto;
-	padding: 4px 8px 4px 8px !important;
+	padding: 4px 12px 4px 12px !important;
 	background-color: #721B6F;
 	color:white;
 	font-family: 'Space Mono', monospace;
-	font-size: 1rem !important;
-	line-height: 1.2rem !important;
+	font-weight: bold;
+	font-size: 1.1rem !important;
 }
