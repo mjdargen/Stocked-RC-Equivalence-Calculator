@@ -65,13 +65,15 @@ function resistor(target, numComp, compVals) {
 		resCombination(compVals, num_res, i, 0, data, target);
 	}
 
+	var units = document.getElementById("selected_unit").value;
+
 	// print results
-	outputStr = "Closest Value: " + closest_val.toFixed(3) + " Ohms <br>";
-	outputStr += "Difference: " + closest_diff.toFixed(3) + " Ohms <br>";
+	outputStr = "Closest Value: " + closest_val.toFixed(3) + " " + units + " <br>";
+	outputStr += "Difference: " + closest_diff.toFixed(3) + " " + units + " <br>";
 	outputStr += "Resistor Configuration: ";
 	for (var i=0; i<numComp; i++) {
 		if (i<closest.length) {
-			outputStr += "R" + i + "=" + closest[i] + " Ohms ";
+			outputStr += "R" + i + "=" + closest[i] + " " + units + " ";
 			if (i+1<closest.length) {
 				if (ser_par_config[i+1]) outputStr += "|| ";
 				else outputStr += "+ ";
@@ -157,13 +159,15 @@ function capacitor(target, numComp, compVals) {
 		capCombination(compVals, num_cap, i, 0, data, target);
 	}
 
+	var units = document.getElementById("selected_unit").value;
+
 	// print results
-	outputStr = "Closest Value: " + closest_val.toFixed(3) + " F <br>";
-	outputStr += "Difference: " + closest_diff.toFixed(3) + " F <br>";
+	outputStr = "Closest Value: " + closest_val.toFixed(3) + " " + units + " <br>";
+	outputStr += "Difference: " + closest_diff.toFixed(3) + " " + units + " <br>";
 	outputStr += "Capacitor Configuration: ";
 	for (var i=0; i<numComp; i++) {
 		if (i<closest.length) {
-			outputStr += "C" + i + "=" + closest[i] + " F ";
+			outputStr += "C" + i + "=" + closest[i] + " " + units + " ";
 			if (i+1<closest.length) {
 				if (ser_par_config[i+1]) outputStr += "|| ";
 				else outputStr += "+ ";

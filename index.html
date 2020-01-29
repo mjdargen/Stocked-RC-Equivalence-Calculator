@@ -15,7 +15,7 @@
 	<!-- import font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space%20Mono">
 
-	<title>Existing R/C Equivalence Calculator</title>
+	<title>Stocked R/C Equivalence Calculator</title>
 
 	<!-- import CSS style sheets -->
 	<link href="style.css" rel="stylesheet">
@@ -39,7 +39,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 mx-auto pl-3 pr-3 text-center">
-				<p>Have you ever needed a specific resistor or capacitor that you don't have? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable	optimization problem with billions of different combinations, use this program!</p>
+				<p>Have you ever needed a specific resistor or capacitor that you don't have? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable
+					optimization problem with billions of different combinations, use this program!</p>
 				<p>Just input the target value, the maximum number of components you would like to use, the values of the components you have, whether it's a resistor or a capacitor, and click calculate!</p>
 				<hr>
 			</div>
@@ -47,7 +48,7 @@
 
 		<!-- input text fields -->
 		<div class="row">
-			<div class="col-md-4 mx-auto p-2 text-center my-auto">
+			<div class="col-md-6 mx-auto p-2 text-center my-auto">
 				<table class="mx-auto text-center">
 					<tbody>
 						<tr>
@@ -55,7 +56,18 @@
 								<p>Target Value:</p>
 							</td>
 							<td class="align-top">
-								<textarea id="targetText" type="text" rows="1" cols="12" style="resize: none;">1475</textarea>
+								<textarea id="targetText" type="text" rows="1" cols="10" style="resize: none;">1475</textarea>
+							</td>
+							<td class="align-top">
+								<select name="units" id="selected_unit">
+									<option value="Ohms">Ohms</option>
+									<option value="kOhms">kOhms</option>
+									<option value="MOhms">MOhms</option>
+									<option value="pF">pF</option>
+									<option value="pF">nF</option>
+									<option value="pF">uF</option>
+									<option value="pF">mF</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
@@ -63,16 +75,17 @@
 								<p>Number of Components:</p>
 							</td>
 							<td class="align-top">
-								<textarea id="numCompText" type="text" rows="1" cols="12" style="resize: none;">3</textarea>
+								<textarea id="numCompText" type="text" rows="1" cols="10" style="resize: none;">3</textarea>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-md-8 mx-auto p-2 text-center">
+			<div class="col-md-6 mx-auto p-2 text-center">
 				<p>List the component values you presently have in a comma-separated list as shown below. Do not include units! Below is a list of common resistor values for example.</p>
 				<p>Standardize your units! If you give a value in killiohms, all values must be in killiohms. If you give a value in nanofarads, all values must be in nanofarads. The result will always be in the same units as the values you provided.</p>
-				<textarea id="compValsText" type="text" rows="4" style="width:100%; resize: none;">10,15,22,33,47,68,100,150,220,330,470,680,1000,1500,2200,3300,4700,6800,10000,15000,22000,33000,47000,68000,100000,150000,220000,330000,470000,680000</textarea>
+				<textarea id="compValsText" type="text" rows="4"
+					style="width:100%; resize: none;">10,15,22,33,47,68,100,150,220,330,470,680,1000,1500,2200,3300,4700,6800,10000,15000,22000,33000,47000,68000,100000,150000,220000,330000,470000,680000</textarea>
 			</div>
 		</div>
 
@@ -108,10 +121,9 @@
 		<div class="row" style="display:none" id="resultRow">
 			<div class="col-md-12 mx-auto text-center">
 				<h2 class="font-weight-bold">Result:</h2>
-				<hr>
 				<p id="calcOutput"></p>
 				<hr>
-				<p class="font-italic text-center">"+" means series and "||" means parallel. The operators have the same precedence and are left associative.</p>
+				<p class="font-italic text-center">"+" means series and "||" means parallel. The operators have the same precedence and are left associative. See example below for more information.</p>
 				<hr>
 			</div>
 		</div>
