@@ -1,4 +1,4 @@
-# Existing-Resistor-Capacitor-Equivalence-Calculator
+# Stocked Resistor/Capacitor Equivalence Calculator
 *A calculator that computes the best configuration of resistors or capacitors you have to achieve an equivalent value.   
 Not just another series/parallel equivalent resistance calculator!*  
 
@@ -10,7 +10,7 @@ Just input the target value, the maximum number of components you would like to 
 ---  
 To try out the web application, go to https://dargenio.dev/Stocked-RC-Equivalence-Calculator/.  
 
-You can also view the JavaScript source file above in the repository.  
+You can view the JavaScript source file above in the repository.  
 
 ---
 <p align="center">
