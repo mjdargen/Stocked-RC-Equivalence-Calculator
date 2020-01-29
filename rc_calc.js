@@ -47,6 +47,9 @@ function calculatorClick() {
 	calcOutput.innerHTML = outputStr;
 	resultDisplay.style.display = "block";
 	exampleDisplay.style.display = "flex";
+
+	// scroll down to result
+	window.scrollTo(0,exampleDisplay.scrollHeight);
 }
 
 /*
