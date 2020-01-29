@@ -46,6 +46,11 @@ p {
 	text-align:left;
 }
 
+textarea {
+	font-size: 1rem !important;
+	line-height: 1.35rem !important;
+}
+
 .px-8 {
   padding-left: 4rem !important;
 	padding-right: 4rem !important;
