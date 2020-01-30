@@ -39,10 +39,27 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 mx-auto pl-3 pr-3 text-center">
-				<p>Have you ever needed a specific resistor or capacitor that you don't have? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable
-					optimization problem with billions of different combinations, use this program!</p>
-				<p>Just input the target value, the maximum number of components you would like to use, the values of the components you have, whether it's a resistor or a capacitor, and click calculate!</p>
+				<p>Have you ever needed a specific resistor or capacitor that you don't have? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable optimization problem with billions of different combinations, use this program!</p>
+				<p>Just select resistor or capacitor, enter the target value, input the max number of components you would like to use, enter a list of the values of the components you have, and click calculate!</p>
 				<hr>
+			</div>
+		</div>
+
+		<!-- radio buttons -->
+		<div class="row">
+			<div class="col-xs-4 mx-auto p-0 text-center">
+				<label class="container mt-3 mb-3">
+					<input type="radio" checked="checked" name="component" id="resRadio">
+					Resistor
+					<span class="checkmark"></span>
+				</label>
+			</div>
+			<div class="col-xs-4 mx-auto p-0 text-center">
+				<label class="container mt-3 mb-3">
+					<input type="radio" name="component" id="capRadio">
+					Capacitor
+					<span class="checkmark"></span>
+				</label>
 			</div>
 		</div>
 
@@ -89,27 +106,9 @@
 			</div>
 		</div>
 
-		<!-- radio buttons -->
-		<div class="row">
-			<div class="col-xs-4 mx-auto p-0 text-center">
-				<label class="container">
-					<input type="radio" checked="checked" name="component" id="resRadio">
-					Resistor
-					<span class="checkmark"></span>
-				</label>
-			</div>
-			<div class="col-xs-4 mx-auto p-0 text-center">
-				<label class="container">
-					<input type="radio" name="component" id="capRadio">
-					Capacitor
-					<span class="checkmark"></span>
-				</label>
-			</div>
-		</div>
-
 		<!-- big button -->
 		<div class="row">
-			<div class="col-md-12 mx-auto p-0 text-center">
+			<div class="col-md-12 mx-auto p-2 text-center">
 				<button onclick="calculatorClick()" id="calcButton">
 					Calculate!
 				</button>
