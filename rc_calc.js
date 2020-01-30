@@ -21,7 +21,7 @@ function calculatorClick() {
 	var targetTextObj = document.getElementById('targetText');
 	var numCompTextObj = document.getElementById('numCompText');
 	var compValsTextObj = document.getElementById('compValsText');
-	var target = parseInt(targetTextObj.value);
+	var target = parseFloat(targetTextObj.value);
 	var numComp = parseInt(numCompTextObj.value);
 	var compValsStr = compValsTextObj.value;
 
@@ -31,12 +31,12 @@ function calculatorClick() {
 
 	while (compValsStr.indexOf(",") != -1) {
 		var comma = compValsStr.indexOf(",");
-		var newInt = parseInt(compValsStr.substring(0,comma));
+		var newInt = parseFloat(compValsStr.substring(0,comma));
 		compValsStr = compValsStr.substring(comma+1,compValsStr.length);
 		compVals[i] = newInt;
 		i++;
 	}
-	compVals[i] = parseInt(compValsStr);
+	compVals[i] = parseFloat(compValsStr);
 	if (document.getElementById("resRadio").checked) {
 		resistor(target, numComp, compVals);
 	}
