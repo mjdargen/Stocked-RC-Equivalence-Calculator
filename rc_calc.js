@@ -28,20 +28,48 @@ function calculatorClick() {
 	var compVals = [];
 	compVals[0] = "";
 	var i = 0;
+	var errFlag = 0;
 
-	while (compValsStr.indexOf(",") != -1) {
-		var comma = compValsStr.indexOf(",");
-		var newInt = parseFloat(compValsStr.substring(0,comma));
-		compValsStr = compValsStr.substring(comma+1,compValsStr.length);
+	// error in parsing target value
+	if (isNaN(target)) {
+		outputStr = "Error check 'Target Value' input! <br>"
+	}
+	// error in parsing number of components
+	else if (isNaN(numComp)){
+		outputStr = "Error check 'Number of Components' input! <br>"
+	}
+	// else if no error in target or numComp
+	else if (!isNaN(target) && !isNaN(numComp)) {
+		while (compValsStr.indexOf(",") != -1) {
+			var comma = compValsStr.indexOf(",");
+			var newInt = parseFloat(compValsStr.substring(0,comma));
+			// error in parsing component value list, set flag
+			if (isNaN(newInt)) {
+				errFlag = 1;
+				break;
+			}
+			compValsStr = compValsStr.substring(comma+1,compValsStr.length);
+			compVals[i] = newInt;
+			i++;
+		}
+		var newInt = parseFloat(compValsStr);
+		// error in parsing component value list, set flag
+		if (isNaN(newInt)) {
+			errFlag = 1;
+		}
 		compVals[i] = newInt;
-		i++;
-	}
-	compVals[i] = parseFloat(compValsStr);
-	if (document.getElementById("resRadio").checked) {
-		resistor(target, numComp, compVals);
-	}
-	else if (document.getElementById("capRadio").checked) {
-		capacitor(target, numComp, compVals);
+		if (errFlag == 0) {
+			if (document.getElementById("resRadio").checked) {
+				resistor(target, numComp, compVals);
+			}
+			else if (document.getElementById("capRadio").checked) {
+				capacitor(target, numComp, compVals);
+			}
+		}
+		// error in parsing component value list
+		else {
+			outputStr = "Error check 'Component Values List' input! <br>"
+		}
 	}
 
 	calcOutput.innerHTML = outputStr;
