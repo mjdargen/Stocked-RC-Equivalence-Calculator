@@ -4,7 +4,7 @@
 ---  
 Have you ever needed a specific resistor or capacitor that you don't have or that doesn't exist? Have no fear! You can probably make that specific resistance or capacitance value using components you already have. Instead of solving a huge multivariable optimization problem with billions of different combinations, use this program!  
 
-Just input the target value, the maximum number of components you would like to use, the values of the components you have, whether it's a resistor or a capacitor, and click calculate! The program will spit out what components to use and how to connect them to achieve your target value.  
+Just select resistor or capacitor, enter the target value, input the max number of components you would like to use, enter a list of the values of the components you have, and click calculate! The program will spit out what components to use and how to connect them to achieve your target value.  
 
 ---  
 To try out the web application, go to https://dargenio.dev/Stocked-RC-Equivalence-Calculator/.  
