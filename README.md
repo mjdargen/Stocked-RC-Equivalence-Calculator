@@ -9,6 +9,8 @@ Just select resistor or capacitor, enter the target value, input the max number 
 ---  
 To try out the web application, go to https://dargenio.dev/Stocked-RC-Equivalence-Calculator/.  
 
+For more information, you can check out my Instructable discussing this application: https://www.instructables.com/id/How-to-Achieve-Any-Resistancecapacitance-Using-Com.  
+
 You can view the JavaScript source file above in the repository.  
 
 ---
