@@ -7,7 +7,7 @@ Have you ever needed a specific resistor or capacitor that you don't have or tha
 Just select resistor or capacitor, enter the target value, input the max number of components you would like to use, enter a list of the values of the components you have, and click calculate! The program will spit out what components to use and how to connect them to achieve your target value.  
 
 ---  
-To try out the web application, go to https://dargenio.dev/Stocked-RC-Equivalence-Calculator/.  
+To try out the web application, go to https://dargen.io/Stocked-RC-Equivalence-Calculator/.  
 
 For more information, you can check out my Instructable discussing this application: https://www.instructables.com/id/How-to-Achieve-Any-Resistancecapacitance-Using-Com.  
 
